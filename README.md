@@ -15,4 +15,14 @@ https://www.bmwgm5.com/E46_IKE_Connections.htm
 
 With this, and the help of the people on the following forum, I was able to come up with the following table outlining what signals were required at each pin of the cluster:
 
-#### X11175 Connector
+#### X11175 Connector Pin Function / Signal Levels
+
+| Pin Number | Pin Function             | Detailed Description                   |
+|---         |---                       |---                                     |
+| 1          | Ground                   |                                        |
+|---         |---                       |---                                     |
+| 2          | Battery Charge Indicator | Provides a voltage up to 12 V          |
+|            |                          | indicating the batteries voltage level |
+|---         |---                       |---                                     |
+|            |                          |
+
