@@ -11,7 +11,7 @@ The circuit designed for this project was designed as a shield for an Arduino Me
 
 ### Signals required to operate the cluster
 In order to determine what signals I needed to drive the cluster, I searched for "E46 cluster pinout" and soon arrived at the following website which provided the pinout for the two connectors on the cluster:
-![image](https://user-images.githubusercontent.com/80495580/141702443-ce00808a-a659-4f29-86ae-15959ad65931.png)
+https://www.bmwgm5.com/E46_IKE_Connections.htm
 
 
 
