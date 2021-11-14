@@ -20,7 +20,8 @@ With this, and the help of the people on the following forum, I was able to come
 | Pin Number | Pin Function             | Detailed Description                   |
 | ---        | ---                      | ---                                    |
 | 1          | Ground                   |                                        |
-| 2          | Battery Charge Indicator | Provides a voltage up to 12 V          |
-|            |                          | indicating the batteries voltage level |
+| 2          | Battery Charge Indicator | Provides a voltage up to 12 V 
+                                          indicating the batteries voltage level|
+|            |                          |  |
 |            |                          |
 
