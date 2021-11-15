@@ -8,7 +8,7 @@ All of the testing I performed was on an E46 cluster with the following ID numbe
 
 See the following link for how to retreive this data: https://www.e46fanatics.com/threads/just-found-us-version-of-hidden-menu.239619/
 
-## Circuit
+## Hardware Design
 The circuit designed for this project was designed as a shield for an Arduino Mega microcontroller board. The purpose of this circuit was to take the signals from the Arduino Mega and use them to control the lights, gauges, and serial busses in the cluster. With this design, a user can supply 12V to the DC barrel jack input of the Arduino Mega in order to power the cluster, and then connect a USB-B cable from the computer running the video games to the Arduino to pass data between the computer and the Arduino. 
 
 ### Signals required to operate the cluster
