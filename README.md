@@ -142,3 +142,14 @@ If the potentiometer is set to 0 ohms, the tank+ pin will be set to roughly 0.65
 
 In this sense, the circuit acts as a variable resistor that we can set from the Arduino ranging between about 50 Ohms and 397 Ohms, which covers the normal operating range for this pin of a resistance value between 70 Ohms and 395 Ohms (see table above for tank+ pins). In theory, the same circuit could have also been used for the ambient temperature sensor, but I chose against this since it did not change system performance at all.
 
+### Other Circuits
+
+There are a few circuits in the design containing connectors, DIP switches, and other such items that I do not cover here as they are more self-explanatory, but if you would like to know about any other part of of the schematic design, please let me know.
+
+## Arduino Code
+
+For this project, I provided two main programs: E46_Cluster_Test, and main-simhub-code. The following section outlines these two programs, as well as the communication protocol that is common to both programs:
+
+### E46_Cluster_Test
+
+This program was created in order to test 
