@@ -17,26 +17,26 @@ With this, and the help of the people on the following forum, I was able to come
 
 #### X11175 Connector Pin Function / Signal Levels
 
-| Pin Number | Pin Function                     | Detailed Description                                                                     | Notes
-| ---        | ---                              | ---                                                                                      |
-| 1          | Ground                           |                                                                                          |
-| 2          | Battery Charge Indicator         | Provides a voltage up to 12 V indicating the batteries voltage level                     |
-| 3          | Engine Start Signal Feedback     | Not certain, but seems like 12V into this pin indicates the engine has started           |
-| 4          | 12V Power input                  | Always gets 12V from the battery                                                         |
-| 5          | 12V On / Start                   | Receives 12V when car is fully on (key turned to second position)                        |
-| 6          | 12V Accessory / On / Start       | Receives 12V when car is in accessory mode or when fully on                              |
-| 7          | Cluster backlight                | On certain cluster models (not this one), setting to 12V turns backight on               |
-| 8          | Speedometer Signal Output        | Unknown what this does, the cluster I used did not have anything wired here              |
-| 9          | CAN-H Signal                     | The CAN High side of the differential pair                                               | 
-| 10         | CAN-L Signal                     | The CAN Low side of the differential pair                                                |
+| Pin Number | Pin Function                     | Detailed Description                                                                     | Notes |
+| ---        | ---                              | ---                                                                                      |       |
+| 1          | Ground                           |                                                                                          |       |
+| 2          | Battery Charge Indicator         | Provides a voltage up to 12 V indicating the batteries voltage level                     |       |
+| 3          | Engine Start Signal Feedback     | Not certain, but seems like 12V into this pin indicates the engine has started           |       |
+| 4          | 12V Power input                  | Always gets 12V from the battery                                                         |       |
+| 5          | 12V On / Start                   | Receives 12V when car is fully on (key turned to second position)                        |       |
+| 6          | 12V Accessory / On / Start       | Receives 12V when car is in accessory mode or when fully on                              |       |
+| 7          | Cluster backlight                | On certain cluster models (not this one), setting to 12V turns backight on               |       |
+| 8          | Speedometer Signal Output        | Unknown what this does, the cluster I used did not have anything wired here              |       |
+| 9          | CAN-H Signal                     | The CAN High side of the differential pair                                               |       |
+| 10         | CAN-L Signal                     | The CAN Low side of the differential pair                                                |       |
 | 11         | Fuel Tank 1 +                    | Pin that fuel tank 1 level sensor positive signal is connected to                        | 70 Ohms to ground = empty, 395 Ohms to ground = full |
-| 12         | Fuel Tank 1 -                    | Return connection for fuel tank 1 level sensor (sits at ground potential)                |
-| 13         | Oil Pressure Switch              | Connects to oil pressure sensor                                                          |
-| 14         | K-Bus Signal                     | K-Bus Communication signal                                                               |
+| 12         | Fuel Tank 1 -                    | Return connection for fuel tank 1 level sensor (sits at ground potential)                |       |
+| 13         | Oil Pressure Switch              | Connects to oil pressure sensor                                                          |       |
+| 14         | K-Bus Signal                     | K-Bus Communication signal                                                               |       |
 | 15         | Fuel Tank 2 +                    | Pin that fuel tank 2 level sensor positive signal is connected to                        | 70 Ohms to ground = empty, 310 Ohms to ground = full |
-| 16         | Fuel Tank 2 -                    | Return connection for fuel tank 2 level senor (sits at ground potential)                 |
-| 17         | Oil Level Sensor                 | Signal that measures how full the engine oil is                                          |
-| 18         | Service Interval Indicator Reset | Not certain what purpose this serves                                                     |
-| 19         | Rear-Left Wheel Speed Sensor     | Signal that connects to wheel speed sensor that drives the speedometer                   |
-| 20         | Brake Fluid Level Sensor         | Signal that 
+| 16         | Fuel Tank 2 -                    | Return connection for fuel tank 2 level senor (sits at ground potential)                 |       |
+| 17         | Oil Level Sensor                 | Signal that measures how full the engine oil is                                          |       |
+| 18         | Service Interval Indicator Reset | Not certain what purpose this serves                                                     |       |
+| 19         | Rear-Left Wheel Speed Sensor     | Signal that connects to wheel speed sensor that drives the speedometer                   |       |
+| 20         | Brake Fluid Level Sensor         | Signal that connects to brake fluid sensor                                               |       |
 
