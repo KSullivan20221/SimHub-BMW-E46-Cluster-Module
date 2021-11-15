@@ -31,8 +31,8 @@ With this, and the help of the people on the following forum, I was able to come
 | 10         | CAN-L Signal                     | The CAN Low side of the differential pair                                                |       |
 | 11         | Fuel Tank 1 +                    | Pin that fuel tank 1 level sensor positive signal is connected to                        | 70 Ohms to ground = empty, 395 Ohms to ground = full |
 | 12         | Fuel Tank 1 -                    | Return connection for fuel tank 1 level sensor (sits at ground potential)                |       |
-| 13         | Oil Pressure Switch              | Connects to oil pressure sensor                                                          |       |
-| 14         | K-Bus Signal                     | K-Bus Communication signal                                                               |       |
+| 13         | Oil Pressure Switch              | Connects to oil pressure sensor                                                          | Pulling down to ground = oil pressure issue, leaving unconnected = no issue      |
+| 14         | K-Bus Signal                     | K-Bus Communication signal                                                               | The K-Bus can be controlled by on of the Arduino's serial peripherals after being level-shifted so that it ranges from 0-12V instead of the Arduino's 0-5V      |
 | 15         | Fuel Tank 2 +                    | Pin that fuel tank 2 level sensor positive signal is connected to                        | 70 Ohms to ground = empty, 310 Ohms to ground = full |
 | 16         | Fuel Tank 2 -                    | Return connection for fuel tank 2 level senor (sits at ground potential)                 |       |
 | 17         | Oil Level Sensor                 | Signal that measures how full the engine oil is                                          |       |
