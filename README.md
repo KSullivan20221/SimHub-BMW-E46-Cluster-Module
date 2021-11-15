@@ -30,13 +30,20 @@ With this, and the help of the people on the following forum, I was able to come
 | 9          | CAN-H Signal                     | The CAN High side of the differential pair                                               |       |
 | 10         | CAN-L Signal                     | The CAN Low side of the differential pair                                                |       |
 | 11         | Fuel Tank 1 +                    | Pin that fuel tank 1 level sensor positive signal is connected to                        | 70 Ohms to ground = empty, 395 Ohms to ground = full |
-| 12         | Fuel Tank 1 -                    | Return connection for fuel tank 1 level sensor (sits at ground potential)                |       |
+| 12         | Fuel Tank 1 -                    | Return connection for fuel tank 1 level sensor (sits at ground potential)                | Connecting this to ground does not cause issues for this circuit      |
 | 13         | Oil Pressure Switch              | Connects to oil pressure sensor                                                          | Pulling down to ground = oil pressure issue, leaving unconnected = no issue      |
 | 14         | K-Bus Signal                     | K-Bus Communication signal                                                               | The K-Bus can be controlled by on of the Arduino's serial peripherals after being level-shifted so that it ranges from 0-12V instead of the Arduino's 0-5V      |
 | 15         | Fuel Tank 2 +                    | Pin that fuel tank 2 level sensor positive signal is connected to                        | 70 Ohms to ground = empty, 310 Ohms to ground = full |
-| 16         | Fuel Tank 2 -                    | Return connection for fuel tank 2 level senor (sits at ground potential)                 |       |
-| 17         | Oil Level Sensor                 | Signal that measures how full the engine oil is                                          |       |
+| 16         | Fuel Tank 2 -                    | Return connection for fuel tank 2 level senor (sits at ground potential)                 | Connecting this to ground does not cause issues for this circuit      |
+| 17         | Oil Level Sensor                 | Signal that measures how full the engine oil is                                          | Connecting this pin to ground indicates an issue with the oil level, leaving unconnected = no issue       |
 | 18         | Service Interval Indicator Reset | Not certain what purpose this serves                                                     |       |
-| 19         | Rear-Left Wheel Speed Sensor     | Signal that connects to wheel speed sensor that drives the speedometer                   |       |
-| 20         | Brake Fluid Level Sensor         | Signal that connects to brake fluid sensor                                               |       |
+| 19         | Rear-Left Wheel Speed Sensor     | Signal that connects to wheel speed sensor that drives the speedometer                   | This is driven by a 12V fixed 50% duty cycle variable frequency square-wave (about 31 Hz = 10 MPH, 1646 Hz = 155 MPH)      |
+| 20         | Brake Fluid Level Sensor         | Signal that connects to brake fluid sensor                                               | Connecting this to ground indicates there is no issue with the brake fluid, leaving this unconnected indicates there is an issue      |
+| 21         | Airbag Warning LED               | Indicates the passenger airbag is ready to engage                                        | Connecting this to ground indicates the airbag is ready to engage, and will illuminate the light on the dashboard  |
+| 22         | ABS Warning Light                | Inicates that ABS is disabled                                                            | Connecting to ground indicates that ABS is active, and the thus the LED on the cluster will turn off, and vice versa |
+| 23         | Parking brake switch             | Indicates that the E-Brake is engaged                                                    | Connecting to ground indicates that the parking brake is not engaged, and will cause the 'BRAKE' light to turn off |
+| 24         | Brake wear sensor                | Indicates when the brakes are worn                                                       | Connecting to ground indicates that the brakes are not worn, and the cluster light will turn off, and vice versa |
+| 25         | Diag Signal TX                   | Unsure the function of this signal                                                       |       |
+| 26         | Coolant Level Sensor             | Indicates if the coolant level is too low                                                | Connecting this to ground indicates that the coolant level is sufficient, and will turn the cluster light off, and vice versa |
+
 
