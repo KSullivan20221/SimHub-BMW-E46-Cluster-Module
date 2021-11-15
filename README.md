@@ -15,6 +15,8 @@ https://www.bmwgm5.com/E46_IKE_Connections.htm
 
 With this, and the help of the people on the following forum, I was able to come up with the following table outlining what signals were required at each pin of the cluster:
 
+BMW CAN Bus Forum: https://www.bimmerforums.com/forum/showthread.php?1887229-E46-Can-bus-project
+
 #### X11175 Connector Pin Function / Signal Levels
 
 | Pin Number | Pin Function                     | Detailed Description                                                                     | Notes |
@@ -32,7 +34,7 @@ With this, and the help of the people on the following forum, I was able to come
 | 11         | Fuel Tank 1 +                    | Pin that fuel tank 1 level sensor positive signal is connected to                        | 70 Ohms to ground = empty, 395 Ohms to ground = full |
 | 12         | Fuel Tank 1 -                    | Return connection for fuel tank 1 level sensor (sits at ground potential)                | Connecting this to ground does not cause issues for this circuit      |
 | 13         | Oil Pressure Switch              | Connects to oil pressure sensor                                                          | Pulling down to ground = oil pressure issue, leaving unconnected = no issue      |
-| 14         | K-Bus Signal                     | K-Bus Communication signal                                                               | The K-Bus can be controlled by on of the Arduino's serial peripherals after being level-shifted so that it ranges from 0-12V instead of the Arduino's 0-5V      |
+| 14         | K-Bus Signal                     | K-Bus Communication signal                                                               | The K-Bus can be controlled by one of the Arduino's serial peripherals after being level-shifted so that it ranges from 0-12V instead of the Arduino's 0-5V      |
 | 15         | Fuel Tank 2 +                    | Pin that fuel tank 2 level sensor positive signal is connected to                        | 70 Ohms to ground = empty, 310 Ohms to ground = full |
 | 16         | Fuel Tank 2 -                    | Return connection for fuel tank 2 level senor (sits at ground potential)                 | Connecting this to ground does not cause issues for this circuit      |
 | 17         | Oil Level Sensor                 | Signal that measures how full the engine oil is                                          | Connecting this pin to ground indicates an issue with the oil level, leaving unconnected = no issue       |
@@ -46,4 +48,5 @@ With this, and the help of the people on the following forum, I was able to come
 | 25         | Diag Signal TX                   | Unsure the function of this signal                                                       |       |
 | 26         | Coolant Level Sensor             | Indicates if the coolant level is too low                                                | Connecting this to ground indicates that the coolant level is sufficient, and will turn the cluster light off, and vice versa |
 
+#### X11176 Connector Pin Function / Signal Levels
 
