@@ -81,3 +81,8 @@ BMW CAN Bus Forum: https://www.bimmerforums.com/forum/showthread.php?1887229-E46
   <img width="600" height="400" src="https://user-images.githubusercontent.com/80495580/141721741-2b796fdc-2c54-4534-abc2-b3b0fd49860e.png">
 </p>
 
+This circuit in essence acts like a switch: When the Arduino applies 5V to the input of the circuit, the MOSFET (the DMN67D8L-7 part) turn on, and pulls the cluster pin to ground. The current that flows in this case can be up to 30mA, so the part was selected so that it could handle at least this (the selected part can handle up to roughly 200 mA). If the Arduino applies 0V to the input of the circuit, the MOSFET turns off and the cluster pin goes back to 12V. 
+
+This circuit is used to control the following pins:  
+X11175 Connector: 13, 17, 19, 20, 21, 22, 23, 24, 26  
+X11176 Connector: 4, 5, 6, 7, 12, 13
