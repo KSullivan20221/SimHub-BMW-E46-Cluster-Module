@@ -73,3 +73,8 @@ BMW CAN Bus Forum: https://www.bimmerforums.com/forum/showthread.php?1887229-E46
 | 17 	     | Not connected				| N/A											   |																				      |
 | 18 	     | Not connected				| N/A											   |																				      |
 
+### Sub-Circuits used in cluster module
+
+#### Basic Pull-Down Network
+
+
