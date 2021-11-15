@@ -18,7 +18,7 @@ With this, and the help of the people on the following forum, I was able to come
 #### X11175 Connector Pin Function / Signal Levels
 
 | Pin Number | Pin Function                     | Detailed Description                                                                     | Notes |
-| ---        | ---                              | ---                                                                                      |       |
+| ---        | ---                              | ---                                                                                      | ---   |
 | 1          | Ground                           |                                                                                          |       |
 | 2          | Battery Charge Indicator         | Provides a voltage up to 12 V indicating the batteries voltage level                     |       |
 | 3          | Engine Start Signal Feedback     | Not certain, but seems like 12V into this pin indicates the engine has started           |       |
