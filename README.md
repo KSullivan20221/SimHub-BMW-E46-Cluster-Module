@@ -81,8 +81,59 @@ BMW CAN Bus Forum: https://www.bimmerforums.com/forum/showthread.php?1887229-E46
   <img width="600" height="400" src="https://user-images.githubusercontent.com/80495580/141721741-2b796fdc-2c54-4534-abc2-b3b0fd49860e.png">
 </p>
 
-This circuit in essence acts like a switch: When the Arduino applies 5V to the input of the circuit, the MOSFET (the DMN67D8L-7 part) turn on, and pulls the cluster pin to ground. The current that flows in this case can be up to 30mA, so the part was selected so that it could handle at least this (the selected part can handle up to roughly 200 mA). If the Arduino applies 0V to the input of the circuit, the MOSFET turns off and the cluster pin goes back to 12V. 
+This circuit in essence acts like a switch: When the Arduino applies 5V to the input of the circuit, the MOSFET (the DMN67D8L-7 part) turn on, and pulls the cluster pin to ground. The current that flows in this case can be up to 30mA, so the part was selected so that it could handle at least this (the selected part can handle up to roughly 200 mA). If the Arduino applies 0V to the input of the circuit, the MOSFET turns off and the cluster pin is pulled back up to 12V. 
 
 This circuit is used to control the following pins:  
 X11175 Connector: 13, 17, 19, 20, 21, 22, 23, 24, 26  
 X11176 Connector: 4, 5, 6, 7, 12, 13
+
+### 5V to 12V Level Shifter
+
+<p align="center">
+  <img width="700" height="400" src="https://user-images.githubusercontent.com/80495580/141861896-6b0c0360-dcdd-4dbd-a1d6-0eff3e0b766d.png">
+</p>
+
+This circuit acts very similar to the basic pull-down network: If the Arduino applies 5V on the input of the circuit, Q6 will turn on (connect the cluster pin to 12V), and Q4 will turn off. If the Arduino applies 0V on the input of the circuit, Q6 will turn off, and Q4 will turn on (connect the cluster pin to ground). The 10 Ohm resistor was added to limit the current going into the pin the circuit is connected to. 
+
+This circuit is used to control the following pins:
+X11175 Connector: 2, 7
+X11176 Connector: 14
+
+### KBUS Level Shifter
+
+<p align="center">
+  <img width="600" height="400" src="https://user-images.githubusercontent.com/80495580/141863392-35ccdd1d-ddab-4ce9-bc47-bd262ea28a78.png">
+</p>
+
+When the Arduino applies 0V to this circuit, Q7 turns off, and pulls the gate of Q9 up to 5V. This turns on Q9, and thus applies 0V to cluster pin 14. When the Arduino applies 5V to this circuit, Q7 turns on, and pulls the gate of Q9 down to ground. This turns off Q9, and thus pulls cluster pin 14 up to 12V. This circuit is used to translate the 5V 'Serial' messages coming from the Arduino to 12V message signals that the cluster expects to see. 
+
+### Ignition and Accessory Mode Circuits
+
+<p align="center">
+  <img width="600" height="400" src="https://user-images.githubusercontent.com/80495580/141863796-2dc0e00a-aaa6-44a4-86e2-1ab881b6e1c9.png">
+</p>
+
+When the Arduino applies 5V to this circuit, it turns on Q31, which then pulls the gate of Q32 down to ground. Q32 is a PMOS transistor, and thus this turns the FET 'ON' which then applies 12V to the cluster pin. When the Arduino applies 0V to this circuit, it turns Q31 off, which then pulls the gate of Q32 up to 12V. This turns the FET 'OFF' which then pulls the cluster pin down to ground.  
+
+This circuit was used to control the ignition and accessory mode cluster pins (X11175 pins 5 and 6 respectively)
+
+### SPI -> CAN Circuitry
+
+<p align="center">
+  <img width="1000" height="600" src="https://user-images.githubusercontent.com/80495580/141864479-6f456eca-c6f2-40e4-aa95-d3e14e86c09f.png">
+</p>
+
+This circuit is a direct copy of the circuit used on the MCP2515 SPI to CAN development boards, such as this one:
+
+<p align="center">
+  <img width="300" height="200" src="https://user-images.githubusercontent.com/80495580/141864736-cf333751-c0db-4755-9241-5584cec9435f.png">
+</p>
+
+### Fuel Level Circuit
+
+This circuit is known more commonly as a 'shunt-regulator' (similar to the popular TL431 part you can find available online). This circuit makes more sense when you consider what the circuit on the input of the cluster looks like for X11175 Pins 11 and 15 (Tank1+ and Tank2+ respectively):
+
+![image](https://user-images.githubusercontent.com/80495580/141866364-0eb95272-a6f4-4fed-bbff-3cd0e93c879a.png)
+
+In this more simplified circuit, I represent the digital potentiometer as a normal potentiometer, and show what the input of the cluster looks like for the Tank+ pins. The idea is that as we change the value of the potentiometer, the gain of the circuit changes and causes the voltage at the Tank+ pin to change accordingly. For example, if the potentiometer is set to 0 ohms, the tank+ pin will be set to roughly 0.65V. To the cluster, this would look just the same as connecting a 50 Ohm resistor from the pin to ground. In the case that the potentiometer is set to 5kOhms, the voltage at the take+ pin will be set to roughly 2.7 Volts, which looks just the same as if a 397 Ohms resistor was connected from the pin to ground. In this sense, the circuit acts as a variable resistor that we can set from the Arduino ranging between about 50 Ohms and 397 Ohms, which covers the normal operating range for this pin of a resistance value between 70 Ohms and 395 Ohms (see table above for tank+ pins). In theory, the same circuit could have also been used for the ambient temperature sensor, but I chose against this since it did not change system performance at all.
+
