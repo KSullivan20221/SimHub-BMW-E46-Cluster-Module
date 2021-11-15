@@ -77,6 +77,7 @@ BMW CAN Bus Forum: https://www.bimmerforums.com/forum/showthread.php?1887229-E46
 
 #### Basic Pull-Down Network
 
-![image](https://user-images.githubusercontent.com/80495580/141721741-2b796fdc-2c54-4534-abc2-b3b0fd49860e.png)
-
+<p align="center">
+  <img width="600" height="400" src="https://user-images.githubusercontent.com/80495580/141721741-2b796fdc-2c54-4534-abc2-b3b0fd49860e.png">
+</p>
 
