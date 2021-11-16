@@ -172,38 +172,37 @@ In addition, make sure the Arduino Serial monitor is setup as shown below (most 
 | ignition            | Either 1 or 0                                             | Turns the ignition state to on / off                                   |
 | accessory           | Either 1 or 0                                             | Turns the accessory state to on / off                                  |
 | fuel                | Integer between 1 and 100                                 | Sets the fuel gauge to the desired value                               |
-| engineStateFeedback | Either 1 or 0                                             |                                                                        |
-| signalGong          | Either 1 or 0                                             |                                                                        |
-| bc_button           | Either 1 or 0                                             |                                                                        |
+| engineStateFeedback | Either 1 or 0                                             | No noticeable effect                                                   |
+| signalGong          | Either 1 or 0                                             | No noticeable effect                                                   |
+| bc_button           | Either 1 or 0                                             | No noticeable effect                                                   |
 | seatBelt            | Either 1 or 0                                             |                                                                        |
-| coolantLevelSensor  | Either 1 or 0                                             |                                                                        |
-| brakeWearSensor     | Either 1 or 0                                             |                                                                        |
-| parkingBrakeState   | Either 1 or 0                                             |                                                                        |
-| ABS_Warning         | Either 1 or 0                                             |                                                                        |
-| airbagLight         | Either 1 or 0                                             |                                                                        |
-| brakeFluidSensor    | Either 1 or 0                                             |                                                                        |
-| oilSensor           | Either 1 or 0                                             |                                                                        |
-| oilPressureSwitch   | Either 1 or 0                                             |                                                                        |
-| clusterBacklight    | Either 1 or 0                                             |                                                                        |
+| coolantLevelSensor  | Either 1 or 0                                             | '0' causes the coolant light to come on, '1' turns it off (have to cycle ignition to change state)             |
+| brakeWearSensor     | Either 1 or 0                                             | '0' causes the brake pad wear light to come on, '1' turns it off       |
+| parkingBrakeState   | Either 1 or 0                                             | '0' turns BRAKE light on, '1' turns it off                             |
+| ABS_Warning         | Either 1 or 0                                             | '0' turns ABS light on, '1' turns it off                               |
+| airbagLight         | Either 1 or 0                                             | '0' turns airbag light off, '1' turns it on                            |
+| brakeFluidSensor    | Either 1 or 0                                             | No noticeable effect                                                   |
+| oilSensor           | Either 1 or 0                                             | No noticeable effect                                                   |
+| oilPressureSwitch   | Either 1 or 0                                             | No noticeable effect                                                   |
+| clusterBacklight    | Either 1 or 0                                             | No noticeable effect                                                   |
 | washerFluidLight    | Either 1 or 0                                             |                                                                        |
 | cruiseLight         | Either 1 or 0                                             |                                                                        |
 | rolloverSensor      | Either 1 or 0                                             |                                                                        |
 | reverse             | Either 1 or 0                                             |                                                                        |
-| mpg                 | Either 1 or 0                                             |                                                                        |
-| eLight              | Either 1 or 0                                             |                                                                        |
-| emlLight            | Either 1 or 0                                             |                                                                        |
-| gasCapLight         | Either 1 or 0                                             |                                                                        |
-| heatLight           | Either 1 or 0                                             |                                                                        |
-| oilLight            | Either 1 or 0                                             |                                                                        |
-| chgLight            | Either 1 or 0                                             |                                                                        |
-| highBeam            | Either 1 or 0                                             |                                                                        |
-| fogRear             | Either 1 or 0                                             |                                                                        |
-| fogFront            | Either 1 or 0                                             |                                                                        |
-| leftBlink           | Either 1 or 0                                             |                                                                        |
-| rightBlink          | Either 1 or 0                                             |                                                                        |
-| backRightLight      | Either 1 or 0                                             |                                                                        |
-| backLeftLight       | Either 1 or 0                                             |                                                                        |
-| frontRightLight     | Either 1 or 0                                             |                                                                        |
-| frontLeftLight      | Either 1 or 0                                             |                                                                        |
-| carLight            | Either 1 or 0                                             |                                                                        |
+| eLight              | Either 1 or 0                                             | '1' turns the _Service Engine Soon_ light on, '0' turns off            |
+| emlLight            | Either 1 or 0                                             | '1' turns the _EML_ light on, '0' turns off                            |
+| gasCapLight         | Either 1 or 0                                             | '1' turns the _CHECK GAS CAP_ light on, '0' turns off                  |
+| heatLight           | Either 1 or 0                                             | '1' turns the over temperature light on, '0' turns off                 |
+| oilLight            | Either 1 or 0                                             | '1' turns the low oil pressure warning light on, '0' turns it off      |
+| chgLight            | Either 1 or 0                                             | '1' turns the battery charge light on, '0' turns it off                |
+| highBeam            | Either 1 or 0                                             | '1' turns the highbeam indicator on, '0' turns it off                  |
+| fogRear             | Either 1 or 0                                             | '1' turns the rear fog-light indicator on, '0' turns it off            |
+| fogFront            | Either 1 or 0                                             | '1' turns the front fog-light indicator on, '0' turns it off           |
+| leftBlink           | Either 1 or 0                                             | '1' turns the left blinker on, '0' turns it off                        |
+| rightBlink          | Either 1 or 0                                             | '1' turns the right blinker on, '0' turns it off                       |
+| backRightLight      | Either 1 or 0                                             | '1' turns the light on, '0' turns it off                               |
+| backLeftLight       | Either 1 or 0                                             | '1' turns the light on, '0' turns it off                               |
+| frontRightLight     | Either 1 or 0                                             | '1' turns the light on, '0' turns it off                               |
+| frontLeftLight      | Either 1 or 0                                             | '1' turns the light on, '0' turns it off                               |
+| carLight            | Either 1 or 0                                             | '1' turns the light on, '0' turns it off                               |
 
