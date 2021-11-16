@@ -171,7 +171,7 @@ This program was created in order to interface with the cluster through the comp
 In order to make this application work with the hardware, you need to do the following:
 
 1. Upload the main-simhub-code sketch to your Arduino
-2. Open SimHub, and Navigate to the following menu
+2. Open SimHub, and Navigate to the following menu: Arduino -> My Hardware
 3. Confirm that there is a device connected in this menu
 4. Under the _Custom Protocol_ for this device, paste in the contents of the _JavaScript_Protocol.txt_ file, and be sure to check the _Use javascript_ box
 5. Press OK at the bottom of the window
