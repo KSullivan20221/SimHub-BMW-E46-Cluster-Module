@@ -171,7 +171,7 @@ In addition, make sure the Arduino Serial monitor is setup as shown below (most 
 | temp                | Integer between 65 and 405                                | Sets the oil temperature gauge to the desired value in degrees celcius |
 | ignition            | Either 1 or 0                                             | Turns the ignition state to on / off                                   |
 | accessory           | Either 1 or 0                                             | Turns the accessory state to on / off                                  |
-| fuel                | Integer between 1 and 100                                 | Sets the fuel gauge to the desired value                               |
+| fuel                | Integer between 1 and 100                                 | Sets the fuel gauge to the desired value (have to cycle 12V power to cluster to change immediately)                              |
 | engineStateFeedback | Either 1 or 0                                             | No noticeable effect                                                   |
 | signalGong          | Either 1 or 0                                             | No noticeable effect                                                   |
 | bc_button           | Either 1 or 0                                             | No noticeable effect                                                   |
