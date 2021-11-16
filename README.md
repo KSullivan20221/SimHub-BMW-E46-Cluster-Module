@@ -8,10 +8,18 @@ All of the testing I performed was on an E46 cluster with the following ID numbe
 
 See the following link for how to retreive this data: https://www.e46fanatics.com/threads/just-found-us-version-of-hidden-menu.239619/
 
-## Hardware Design
+## Credits
+
+There is no way I could have accomplished this project without many of the resources available to me:
+* I never would have got off the ground if it weren't for this pinout diagram for the cluster: https://www.bmwgm5.com/E46_IKE_Connections.htm
+* I borrowed several functions / hardware connections from _Neuros-Projekte_, as well as most all of the KBUS communication methods: https://neuros-projekte.de/simulator/bmw-e46-arduino-simhub/
+* Most all of the CAN communication was from the extensive research done by the users on this bimmerforums forum: https://www.bimmerforums.com/forum/showthread.php?1887229-E46-Can-bus-project
+* amstudio on YouTube for introducing me to using SimHub, and providing a solid foundation to design my custom protocol on top of: https://www.youtube.com/watch?v=L59NL9EuEdM&ab_channel=amstudio
+
+# Hardware Design
 The circuit designed for this project was designed as a shield for an Arduino Mega microcontroller board. The purpose of this circuit was to take the signals from the Arduino Mega and use them to control the lights, gauges, and serial busses in the cluster. With this design, a user can supply 12V to the DC barrel jack input of the Arduino Mega in order to power the cluster, and then connect a USB-B cable from the computer running the video games to the Arduino to pass data between the computer and the Arduino. 
 
-### Signals required to operate the cluster
+## Signals required to operate the cluster
 In order to determine what signals I needed to drive the cluster, I searched for "E46 cluster pinout" and soon arrived at the following website which provided the pinout for the two connectors on the cluster:
 https://www.bmwgm5.com/E46_IKE_Connections.htm
 
@@ -19,7 +27,7 @@ With this, and the help of the people on the following forum, I was able to come
 
 BMW CAN Bus Forum: https://www.bimmerforums.com/forum/showthread.php?1887229-E46-Can-bus-project
 
-#### X11175 Connector Pin Function / Signal Levels
+### X11175 Connector Pin Function / Signal Levels
 
 | Pin Number | Pin Function                     	| Detailed Description                                                                     | Notes                                                                                                                                                            |
 | ---        | ---                              	| ---                                                                                      | ---   																			      |
@@ -50,7 +58,7 @@ BMW CAN Bus Forum: https://www.bimmerforums.com/forum/showthread.php?1887229-E46
 | 25         | Diag Signal TX                   	| Unsure the function of this signal                                                       |       																			      |
 | 26         | Coolant Level Sensor             	| Indicates if the coolant level is too low                                                | Connecting this to ground indicates that the coolant level is sufficient, and will turn the cluster light off, and vice versa 				      |
 
-#### X11176 Connector Pin Function / Signal Levels
+### X11176 Connector Pin Function / Signal Levels
 
 | Pin Number | Pin Function                     	| Detailed Description                                                                     | Notes                                                                                                                                                            |
 | ---        | ---                              	| ---                                                                                      | ---   																			      |
@@ -73,9 +81,9 @@ BMW CAN Bus Forum: https://www.bimmerforums.com/forum/showthread.php?1887229-E46
 | 17 	     | Not connected				| N/A											   |																				      |
 | 18 	     | Not connected				| N/A											   |																				      |
 
-### Sub-Circuits used in cluster module
+## Sub-Circuits used in cluster module
 
-#### Basic Pull-Down Network
+### Basic Pull-Down Network
 
 <p align="center">
   <img width="600" height="400" src="https://user-images.githubusercontent.com/80495580/141721741-2b796fdc-2c54-4534-abc2-b3b0fd49860e.png">
@@ -87,7 +95,7 @@ This circuit is used to control the following pins:
 X11175 Connector: 13, 17, 19, 20, 21, 22, 23, 24, 26  
 X11176 Connector: 4, 5, 6, 7, 12, 13
 
-### 5V to 12V Level Shifter
+## 5V to 12V Level Shifter
 
 <p align="center">
   <img width="700" height="400" src="https://user-images.githubusercontent.com/80495580/141861896-6b0c0360-dcdd-4dbd-a1d6-0eff3e0b766d.png">
@@ -99,7 +107,7 @@ This circuit is used to control the following pins:
 X11175 Connector: 2, 7
 X11176 Connector: 14
 
-### KBUS Level Shifter
+## KBUS Level Shifter
 
 <p align="center">
   <img width="600" height="400" src="https://user-images.githubusercontent.com/80495580/141863392-35ccdd1d-ddab-4ce9-bc47-bd262ea28a78.png">
@@ -107,7 +115,7 @@ X11176 Connector: 14
 
 When the Arduino applies 0V to this circuit, Q7 turns off, and pulls the gate of Q9 up to 5V. This turns on Q9, and thus applies 0V to cluster pin 14. When the Arduino applies 5V to this circuit, Q7 turns on, and pulls the gate of Q9 down to ground. This turns off Q9, and thus pulls cluster pin 14 up to 12V. This circuit is used to translate the 5V 'Serial' messages coming from the Arduino to 12V message signals that the cluster expects to see. 
 
-### Ignition and Accessory Mode Circuits
+## Ignition and Accessory Mode Circuits
 
 <p align="center">
   <img width="600" height="400" src="https://user-images.githubusercontent.com/80495580/141863796-2dc0e00a-aaa6-44a4-86e2-1ab881b6e1c9.png">
@@ -117,7 +125,7 @@ When the Arduino applies 5V to this circuit, it turns on Q31, which then pulls t
 
 This circuit was used to control the ignition and accessory mode cluster pins (X11175 pins 5 and 6 respectively)
 
-### SPI -> CAN Circuitry
+## SPI -> CAN Circuitry
 
 <p align="center">
   <img width="1000" height="600" src="https://user-images.githubusercontent.com/80495580/141864479-6f456eca-c6f2-40e4-aa95-d3e14e86c09f.png">
@@ -129,7 +137,7 @@ This circuit is a direct copy of the circuit used on the MCP2515 SPI to CAN deve
   <img width="300" height="200" src="https://user-images.githubusercontent.com/80495580/141864736-cf333751-c0db-4755-9241-5584cec9435f.png">
 </p>
 
-### Fuel Level Circuit
+## Fuel Level Circuit
 
 This circuit is known more commonly as a 'shunt-regulator' (similar to the popular TL431 part you can find available online). This circuit makes more sense when you consider what the circuit on the input of the cluster looks like for X11175 Pins 11 and 15 (Tank1+ and Tank2+ respectively):
 
@@ -142,15 +150,15 @@ If the potentiometer is set to 0 ohms, the tank+ pin will be set to roughly 0.65
 
 In this sense, the circuit acts as a variable resistor that we can set from the Arduino ranging between about 50 Ohms and 397 Ohms, which covers the normal operating range for this pin of a resistance value between 70 Ohms and 395 Ohms (see table above for tank+ pins). In theory, the same circuit could have also been used for the ambient temperature sensor, but I chose against this since it did not change system performance at all.
 
-### Other Circuits
+## Other Circuits
 
 There are a few circuits in the design containing connectors, DIP switches, and other such items that I do not cover here as they are more self-explanatory, but if you would like to know about any other part of of the schematic design, please let me know.
 
-## Arduino Code
+# Arduino Code
 
 For this project, I provided two main programs: E46_Cluster_Test, and main-simhub-code. The following section outlines these two programs, as well as the communication protocol that is common to both programs:
 
-### E46_Cluster_Test
+## E46_Cluster_Test
 
 This program was created in order to perform basic tests on the cluster. After uploading this code, you can send commands from the serial monitor to the Arduino, and then the Arduino will interact with the cluster in order to carry out the desired function. You must send every command with the following syntax:
 
@@ -164,7 +172,7 @@ In addition, make sure the Arduino Serial monitor is setup as shown below (most 
 
 See the section _Valid Command / Argument Combos for both programs_ for a list of commands that you can send to the cluster, along with the effect each one has.
 
-### main-simhub-code
+## main-simhub-code
 
 This program was created in order to interface with the cluster through the computer software _SimHub_, which allows you to send data from racing games to an Arduino. This program receieves data from SimHub, and using the same methods as the _E46_Cluster_Test_ program, sets the cluster up to reflect the sent data. You have to upload this program to the Arduino before attempting to use the SimHub application, or else it will hijack the serial port and not let you program the Arduino until you close the application.   
 
@@ -178,7 +186,7 @@ In order to make this application work with the hardware, you need to do the fol
 
 At this point, you should be able to launch games from the SimHub dashboard (ensure that you configure each game according to SimHub's instructions).
 
-### Valid Command / Argument Combos for both programs
+## Valid Command / Argument Combos for both programs
 
 The following is a list of valid commands and arguments that you can send to the instrument cluster from both applications. You can send these commands directly through the serial monitor for the E46_Cluster_Test program, or through a Custom Protocol in SimHub:
 
