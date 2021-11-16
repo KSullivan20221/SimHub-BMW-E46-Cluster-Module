@@ -45,16 +45,16 @@ MCP2515 CAN(MCP2515_CS);
   uint8_t heat_light_state = 0;
   uint8_t charge_light_state = 0;
   uint8_t oil_light_state = 0;
-  uint8_t high_beam_state;
-  uint8_t fog_rear_state = 0;
-  uint8_t fog_front_state = 0;
-  uint8_t left_blinker_state = 0;
-  uint8_t right_blinker_state = 0;
-  uint8_t back_right_light_state = 0;
-  uint8_t back_left_light_state = 0;
-  uint8_t front_right_light_state = 0;
-  uint8_t front_left_light_state = 0;
-  uint8_t car_light_state = 0;
+  bool high_beam_state;
+  bool fog_rear_state = 0;
+  bool fog_front_state = 0;
+  bool left_blinker_state = 0;
+  bool right_blinker_state = 0;
+  bool back_right_light_state = 0;
+  bool back_left_light_state = 0;
+  bool front_right_light_state = 0;
+  bool front_left_light_state = 0;
+  bool car_light_state = 0;
   int battery_charge_val;
 
 class SHCustomProtocol {
@@ -348,14 +348,13 @@ public:
     
     // Send values to the cluster when idling
     setFuel(DIGI_POT_CS, fuel_val);
-    setSpeedometer(SPEED_SIGNAL_PIN, speed_val);
-    //setMPG(mpg_val);
+    setSpeedometer(CAN, SPEED_SIGNAL_PIN, speed_val);
 
     // Run the kbus interaction once every 50 loop cycles
     if(loopCounter >= 50) {
       // Packing up data to send to kbus function
-      byte light_array1[] = {high_beam_state, fog_rear_state, fog_front_state, left_blinker_state, right_blinker_state};
-      byte light_array2[] = {back_right_light_state, back_left_light_state, front_right_light_state, front_left_light_state, car_light_state};
+      bool light_array1[] = {high_beam_state, fog_rear_state, fog_front_state, left_blinker_state, right_blinker_state};
+      bool light_array2[] = {back_right_light_state, back_left_light_state, front_right_light_state, front_left_light_state, car_light_state};
       set_kbus_lights(KBUS, light_array1, light_array2);
       
       // Reset counter
