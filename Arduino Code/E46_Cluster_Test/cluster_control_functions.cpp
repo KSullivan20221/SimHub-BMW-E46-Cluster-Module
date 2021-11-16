@@ -3,6 +3,11 @@
 #include <mcp2515.h>
 #include "constants.h"
 
+/*
+ * The following two funcitons (iso_checksum() and sendKbus were solely derived by the work on Neuros-Projekte:
+ * https://neuros-projekte.de/simulator/bmw-e46-arduino-simhub/
+ */
+
 byte iso_checksum(byte *data, byte len)//len is the number of bytes (not the # of last byte)
 {
   byte crc=0;
@@ -47,14 +52,13 @@ void setSpeedometer(MCP2515 &can_bus, uint8_t speed_signal_pin, int speed_val) {
    displayable speed (where the arm on the speedometer ceases to move further) is about
    163 MPH, so this is what the cap is set to.
   */
-  
   if(speed_val <= MIN_SPEED) {
     speed_val = MIN_SPEED;
   }
   else if(speed_val > MAX_SPEED) {
     speed_val = MAX_SPEED;
   }
-  
+
   // Two linear functions to define the two ranges of relative linearity, and limiting the minimum value sent to 35
   float tone_freq;
   if (speed_val < 10) {
@@ -70,9 +74,10 @@ void setSpeedometer(MCP2515 &can_bus, uint8_t speed_signal_pin, int speed_val) {
 
   //float tone_freq = 10.718 * speed_val - 3.1716;
   tone(speed_signal_pin, int(tone_freq));
+
 }
 
-void setRPM(MCP2515 &can_bus, float rpm_val) {
+void setRPM(MCP2515 &can_bus, int rpm_val) {
   // Threshold the RPM value
   if(rpm_val > MAX_RPM) {
     rpm_val = MAX_RPM;
@@ -89,7 +94,8 @@ void setRPM(MCP2515 &can_bus, float rpm_val) {
   int rpm_msb = (rpm_val_int & 0xFF00) >> 8;
 
   // Setup the can message
-  CAN_Send(can_bus, 0x316, 0x05, 0x62, rpm_lsb, rpm_msb, 0x65, 0x12, 0x00, 0x3E);
+  CAN_Send(can_bus, 0x316, 0, 0, rpm_lsb, rpm_msb, 0, 0, 0, 0);
+
 }
 
 void setTemp(MCP2515 &can_bus, int temp_val) {
@@ -102,32 +108,20 @@ void setTemp(MCP2515 &can_bus, int temp_val) {
   }
 
   // Convert the temperature from float to an int
-  float temp_float = temp_val * 0.75 - 48.373;
-  uint8_t temp_byte = uint8_t(temp_float);
+  uint8_t temp_byte = temp_val + 48.373;
   
   // Setup the can message
   CAN_Send(can_bus, 0x329, 0x00, temp_byte, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00);
-
-}
-
-void setMPG(int mpg_val) {
-
-  // Setup the can message
-  //CAN_Send(0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00);
   
 }
 
 // This may not be extremely accurate for now, but will work ok
 void setFuel(uint8_t chip_select_pin, uint8_t fuel_percent) {
   // Threshold the fuel value
-  
   if(fuel_percent > 100) {
     fuel_percent = 100;
   }
-  else if(fuel_percent < 0) {
-    fuel_percent = 0;
-  }
-  
+
   // Equation to convert from percentage to digi-pot value
   float digipot_val_f = -1.88 * fuel_percent + 205;
   uint8_t digipot_val_int = digipot_val_f;
@@ -147,10 +141,11 @@ void setFuel(uint8_t chip_select_pin, uint8_t fuel_percent) {
 
 // This functions handles illuminating all of the lights that are controlled over
 // the KBUS (which inclues the 
-void set_kbus_lights(HardwareSerial &refSer, byte *light_array1, byte *light_array2) {
+void set_kbus_lights(HardwareSerial &refSer, bool *light_array1, bool *light_array2) {
   // Take the light arrays, and process them into the actual byte we will send
   byte LightByte1 = 0x00;
   byte LightByte2 = 0x00;
+  
   for(int i = 0; i < 5; i++) {
     bool light1_val = light_array1[i];
     if(light1_val) {
@@ -183,13 +178,9 @@ void set_kbus_lights(HardwareSerial &refSer, byte *light_array1, byte *light_arr
   sendKbus(refSer, light_array);
 }
 
-void set_status_lights1(MCP2515 &can_bus, int engine_light_state, int cruise_light_state, int EML_state, int gas_cap_light_state, int heat_light_state, int oil_light_state, int charge_light_state, int fuel_consumption_val) {
+void set_status_lights1(MCP2515 &can_bus, int engine_light_state, int cruise_light_state, int EML_state, int gas_cap_light_state, int heat_light_state, int oil_light_state, int charge_light_state) {
   // Initialize status_byte
   uint8_t status1_byte = 0x00;
-
-  // Parse the fuel consumption value into its LSB and MSB
-  uint8_t consumption_lsb = fuel_consumption_val & (0x00FF);
-  uint8_t consumption_msb = (fuel_consumption_val & (0xFF00)) >> 8;
   
   // Reject false engine light inputs
   if(engine_light_state){
@@ -206,6 +197,6 @@ void set_status_lights1(MCP2515 &can_bus, int engine_light_state, int cruise_lig
   }
   
   int status_byte2 = (heat_light_state<<3)|(oil_light_state<<1);
-  CAN_Send(can_bus, 0x545, status1_byte, consumption_lsb, consumption_msb, status_byte2, 0x00, charge_light_state, 0x00, 0x00);
+  CAN_Send(can_bus, 0x545, status1_byte, 0x00, 0x00, status_byte2, 0x00, charge_light_state, 0x00, 0x00);
   
 }

@@ -3,6 +3,11 @@
 #include <mcp2515.h>
 #include "constants.h"
 
+/*
+ * The following two funcitons (iso_checksum() and sendKbus were solely derived by the work on Neuros-Projekte:
+ * https://neuros-projekte.de/simulator/bmw-e46-arduino-simhub/
+ */
+
 byte iso_checksum(byte *data, byte len)//len is the number of bytes (not the # of last byte)
 {
   byte crc=0;
@@ -40,7 +45,7 @@ void CAN_Send(MCP2515 &can_bus, uint16_t address, byte a, byte b, byte c, byte d
 
 // This function sets the tone frequency on the desired pin the correct value for the 
 // user's desired speed value (in miles-per-hour)
-void setSpeedometer(uint8_t speed_signal_pin, int speed_val) {
+void setSpeedometer(MCP2515 &can_bus, uint8_t speed_signal_pin, int speed_val) {
   /* 
    The minimum value 'tone()' can be sent is 31, which corresponds to a speed of 3.188 MPH
    To be conservative, we set the minimum settable speed at 4 MPH. In addition, the max
@@ -110,21 +115,11 @@ void setTemp(MCP2515 &can_bus, int temp_val) {
   
 }
 
-void setMPG(int mpg_val) {
-
-  // Setup the can message
-  //CAN_Send(0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00);
-  
-}
-
 // This may not be extremely accurate for now, but will work ok
 void setFuel(uint8_t chip_select_pin, uint8_t fuel_percent) {
   // Threshold the fuel value
   if(fuel_percent > 100) {
     fuel_percent = 100;
-  }
-  else if(fuel_percent < 0) {
-    fuel_percent = 0;
   }
 
   // Equation to convert from percentage to digi-pot value
@@ -146,7 +141,7 @@ void setFuel(uint8_t chip_select_pin, uint8_t fuel_percent) {
 
 // This functions handles illuminating all of the lights that are controlled over
 // the KBUS (which inclues the 
-void set_kbus_lights(HardwareSerial &refSer, byte *light_array1, byte *light_array2) {
+void set_kbus_lights(HardwareSerial &refSer, bool *light_array1, bool *light_array2) {
   // Take the light arrays, and process them into the actual byte we will send
   byte LightByte1 = 0x00;
   byte LightByte2 = 0x00;

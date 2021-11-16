@@ -45,16 +45,16 @@ int gas_cap_light_state;
 int heat_light_state;
 int charge_light_state;
 int oil_light_state;
-int high_beam_state;
-int fog_rear_state;
-int fog_front_state;
-int left_blinker_state;
-int right_blinker_state;
-int back_right_light_state;
-int back_left_light_state;
-int front_right_light_state;
-int front_left_light_state;
-int car_light_state;
+bool high_beam_state;
+bool fog_rear_state;
+bool fog_front_state;
+bool left_blinker_state;
+bool right_blinker_state;
+bool back_right_light_state;
+bool back_left_light_state;
+bool front_right_light_state;
+bool front_left_light_state;
+bool car_light_state;
 int battery_charge_val;
 //byte light_array1[5];
 //byte light_array2[5];
@@ -464,7 +464,7 @@ void loop() {
   delay(5);
   setTemp(CAN, temp_val);
   delay(5);
-  set_status_lights1(CAN, engine_light_state, cruise_light_state, EML_state, gas_cap_light_state, heat_light_state, oil_light_state, charge_light_state, fuel_consumption_val);
+  set_status_lights1(CAN, engine_light_state, cruise_light_state, EML_state, gas_cap_light_state, heat_light_state, oil_light_state, charge_light_state);
   delay(5);
   
   /*
@@ -491,8 +491,8 @@ void loop() {
   // Run the kbus interaction once every 255 loop cycles
   if(loopCounter >=50) {
     // Packing up data to send to kbus function
-    byte light_array1[] = {high_beam_state, fog_rear_state, fog_front_state, left_blinker_state, right_blinker_state};
-    byte light_array2[] = {back_right_light_state, back_left_light_state, front_right_light_state, front_left_light_state, car_light_state};
+    bool light_array1[] = {high_beam_state, fog_rear_state, fog_front_state, left_blinker_state, right_blinker_state};
+    bool light_array2[] = {back_right_light_state, back_left_light_state, front_right_light_state, front_left_light_state, car_light_state};
     set_kbus_lights(KBUS, light_array1, light_array2);
 
     // Reset counter
