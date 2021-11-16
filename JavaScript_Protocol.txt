@@ -48,7 +48,7 @@ if(currentGame=='ETS2') {
 	// Car ignition
 	let ignition_state = $prop('EngineIgnitionOn');
 	send_str = send_str.concat('ignition:' + ignition_state + '\n');
-	
+
 	// Car Accessory Mode
 	if(ignition_state == 1) {
 		send_str = send_str.concat('accessory:1\n');
@@ -94,10 +94,6 @@ else {
 	// This is the general area, where we can guess at what commands we think might be general enough for the rest 
 	// of the games that may be played
 	
-	// Fuel Data
-	let rounded_fuel = Math.round($prop('DataCorePlugin.Computed.Fuel_Percent'), 0);
-	send_str = send_str.concat('fuel:' + rounded_fuel + '\n');
-	
 	// Speed Data
 	let rounded_speed = Math.round($prop('SpeedMph'), 2);
 	send_str = send_str.concat('speed:' + rounded_speed + '\n');
@@ -109,6 +105,13 @@ else {
 	// Oil temperature
 	let rounded_temp = Math.round($prop('OilTemperature'), 2);
 	send_str = send_str.concat('temp:' + rounded_temp + '\n');
+	
+	// Fuel data (100% default)
+	send_str = send_str.concat('fuel:100\n');
+	
+	// Ignition and accessory modes
+	send_str = send_str.concat('ignition:1\n');
+	send_str = send_str.concat('accessory:1\n');
 }
 
 send_str = send_str.concat('end:');
