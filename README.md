@@ -162,7 +162,23 @@ In addition, make sure the Arduino Serial monitor is setup as shown below (most 
 
 ![image](https://user-images.githubusercontent.com/80495580/141869540-ebf4e793-6441-4f00-a5a9-c5b729e238b3.png)
 
-#### Valid Command / Argument Combos for program
+See the section _Valid Command / Argument Combos for both programs_ for a list of commands that you can send to the cluster, along with the effect each one has.
+
+### main-simhub-code
+
+This program was created in order to interface with the cluster through the computer software _SimHub_, which allows you to send data from racing games to an Arduino. This program receieves data from SimHub, and using the same methods as the _E46_Cluster_Test_ program, sets the cluster up to reflect the sent data. You have to upload this program to the Arduino before attempting to use the SimHub application, or else it will hijack the serial port and not let you program the Arduino until you close the application.   
+
+In order to make this application work with the hardware, you need to do the following:
+
+1. Upload the main-simhub-code sketch to your Arduino
+2. Open SimHub, and Navigate to the following menu
+3. Confirm that there is a device connected in this menu
+4. Under the _Custom Protocol_ for this device, paste in the contents of the _JavaScript_Protocol.txt_ file, and be sure to check the _Use javascript_ box
+5. Press OK at the bottom of the window
+
+At this point, you should be able to launch games from the SimHub dashboard (ensure that you configure each game according to SimHub's instructions).
+
+### Valid Command / Argument Combos for both programs
 
 | Command             | Valid Arguments                                           | Description                                                            |
 | ---                 | ---                                                       | ---                                                                    |
