@@ -1,0 +1,1 @@
+https://github.com/zegreatclan/SimHub/wiki/Arduino-Tm1638-Display-Wiring

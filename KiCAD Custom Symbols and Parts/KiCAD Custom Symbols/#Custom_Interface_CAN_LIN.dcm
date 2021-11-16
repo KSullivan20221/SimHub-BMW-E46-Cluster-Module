@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP TJA1050T-3
+D High-Speed CAN Transceiver, separate VIO, silent mode, SOIC-8
+K High-Speed CAN Transceiver
+F http://www.nxp.com/documents/data_sheet/TJA1051.pdf
+$ENDCMP
+#
+#End Doc Library

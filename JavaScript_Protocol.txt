@@ -1,0 +1,118 @@
+// Global Variables
+let send_str = ""
+
+// Conditionally define data sent depending on what game we are playing
+let currentGame = $prop('DataCorePlugin.CurrentGame')
+
+if(currentGame=='ETS2') {
+	// Fuel Data
+	let rounded_fuel = Math.round($prop('FuelPercent'), 2);
+	send_str = send_str.concat('fuel:' + rounded_fuel + '\n');
+	
+	// Speed Data
+	let rounded_speed = Math.round($prop('SpeedMph'), 2);
+	send_str = send_str.concat('speed:' + rounded_speed + '\n');
+
+	// RPM Data
+	let rounded_RPM = Math.round($prop('Rpms'), 2);
+	send_str = send_str.concat('rpm:' + rounded_RPM + '\n');
+
+	// Oil temperature
+	let rounded_temp = Math.round($prop('OilTemperature'), 2);
+	send_str = send_str.concat('temp:' + rounded_temp + '\n');
+	
+	// Truck Status
+	let engine_state = $prop('GameRawData.TruckValues.CurrentValues.DamageValues.Engine');
+	let wheel_state = $prop('GameRawData.TruckValues.CurrentValues.DamageValues.WheelsAvg');
+	let chassis_state = $prop('GameRawData.TruckValues.CurrentValues.DamageValues.Chassis');
+	let transmission_state = $prop('GameRawData.TruckValues.CurrentValues.DamageValues.Transmission');
+	let cabin_state = $prop('GameRawData.TruckValues.CurrentValues.DamageValues.Cabin');
+	
+	// Blinkers
+	let left_blinker_state = $prop('GameRawData.TruckValues.CurrentValues.LightsValues.BlinkerLeftActive');
+	if (left_blinker_state == 1) {
+		send_str = send_str.concat('leftBlink:1\n');
+	}
+	else {
+		send_str = send_str.concat('leftBlink:0\n');
+	}
+	
+	let right_blinker_state = $prop('GameRawData.TruckValues.CurrentValues.LightsValues.BlinkerRightActive');
+	if (right_blinker_state == 1) {
+		send_str = send_str.concat('rightBlink:1\n');
+	}
+	else {
+		send_str = send_str.concat('rightBlink:0\n');
+	}	
+	
+	// Car ignition
+	let ignition_state = $prop('EngineIgnitionOn');
+	send_str = send_str.concat('ignition:' + ignition_state + '\n');
+	
+	// Car Accessory Mode
+	if(ignition_state == 1) {
+		send_str = send_str.concat('accessory:1\n');
+	}
+	else {
+		send_str = send_str.concat('accessory:0\n');
+	}
+	
+	// High-Beam state
+	let highbeam_state = $prop('GameRawData.TruckValues.CurrentValues.LightsValues.BeamHigh');
+	if(highbeam_state == 1) {
+		send_str = send_str.concat('highBeam:1\n');
+	}
+	else {
+		send_str = send_str.concat('highBeam:0\n');
+	}
+	
+	
+}
+else if(currentGame == 'PCars') {
+	// Fuel Data
+	let rounded_fuel = Math.round($prop('FuelPercent'), 2);
+	send_str = send_str.concat('fuel:' + rounded_fuel + '\n');
+	
+	// Speed Data
+	let rounded_speed = Math.round($prop('SpeedMph'), 2);
+	send_str = send_str.concat('speed:' + rounded_speed + '\n');
+
+	// RPM Data
+	let rounded_RPM = Math.round($prop('Rpms'), 2);
+	send_str = send_str.concat('rpm:' + rounded_RPM + '\n');
+
+	// Oil temperature
+	let rounded_temp = Math.round($prop('OilTemperature'), 2);
+	send_str = send_str.concat('temp:' + rounded_temp + '\n');
+	
+	// Ignition and accessory modes
+	send_str = send_str.concat('ignition:1\n');
+	send_str = send_str.concat('accessory:1\n');
+
+}
+else {
+	// This is the general area, where we can guess at what commands we think might be general enough for the rest 
+	// of the games that may be played
+	
+	// Fuel Data
+	let rounded_fuel = Math.round($prop('DataCorePlugin.Computed.Fuel_Percent'), 0);
+	send_str = send_str.concat('fuel:' + rounded_fuel + '\n');
+	
+	// Speed Data
+	let rounded_speed = Math.round($prop('SpeedMph'), 2);
+	send_str = send_str.concat('speed:' + rounded_speed + '\n');
+	
+	// RPM Data
+	let rounded_RPM = Math.round($prop('Rpms'), 2);
+	send_str = send_str.concat('rpm:' + rounded_RPM + '\n');
+	
+	// Oil temperature
+	let rounded_temp = Math.round($prop('OilTemperature'), 2);
+	send_str = send_str.concat('temp:' + rounded_temp + '\n');
+}
+
+send_str = send_str.concat('end:');
+
+// Send Commands to the Arduino
+return send_str
+//return $prop('GameRawData.TruckValues.CurrentValues.LightsValues.BlinkerRightActive');
