@@ -1,0 +1,300 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 7 7
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+Wire Notes Line
+	2450 7700 4550 7700
+$Comp
+L Transistor_FET:C3M0120090D Q?
+U 1 1 61BB9405
+P 4500 3950
+AR Path="/615B6ECF/61BB9405" Ref="Q?"  Part="1" 
+AR Path="/61BADA89/61BB9405" Ref="Q?"  Part="1" 
+F 0 "Q?" H 4650 3850 50  0000 L CNN
+F 1 "DMN67D8L-7" H 4650 3750 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 4500 3950 50  0001 C CIN
+F 3 "https://www.wolfspeed.com/media/downloads/824/C3M0120090D.pdf" H 4500 3950 50  0001 L CNN
+	1    4500 3950
+	1    0    0    -1  
+$EndComp
+$Comp
+L Transistor_FET:AO3401A Q?
+U 1 1 61BBAFE2
+P 4600 3350
+AR Path="/615B6ECF/61BBAFE2" Ref="Q?"  Part="1" 
+AR Path="/61BADA89/61BBAFE2" Ref="Q?"  Part="1" 
+F 0 "Q?" V 4950 3200 50  0000 L CNN
+F 1 "BS250FTA" V 4850 3150 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 4800 3275 50  0001 L CIN
+F 3 "http://www.aosmd.com/pdfs/datasheet/AO3401A.pdf" H 4600 3350 50  0001 L CNN
+	1    4600 3350
+	0    1    -1   0   
+$EndComp
+$Comp
+L Device:R_US R?
+U 1 1 61BBE099
+P 4300 3500
+AR Path="/615B6ECF/61BBE099" Ref="R?"  Part="1" 
+AR Path="/61BADA89/61BBE099" Ref="R?"  Part="1" 
+F 0 "R?" H 4100 3550 50  0000 L CNN
+F 1 "10k" H 4100 3450 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 4340 3490 50  0001 C CNN
+F 3 "~" H 4300 3500 50  0001 C CNN
+	1    4300 3500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4300 3350 4300 3250
+Wire Wire Line
+	4300 3250 4400 3250
+Wire Wire Line
+	4300 3650 4300 3700
+Wire Wire Line
+	4300 3700 4600 3700
+Wire Wire Line
+	4600 3700 4600 3550
+Wire Wire Line
+	4600 3750 4600 3700
+Connection ~ 4600 3700
+Wire Wire Line
+	4300 3250 4050 3250
+Connection ~ 4300 3250
+$Comp
+L power:GND #PWR?
+U 1 1 61BC70BC
+P 4600 4200
+AR Path="/615B6ECF/61BC70BC" Ref="#PWR?"  Part="1" 
+AR Path="/61BADA89/61BC70BC" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 4600 3950 50  0001 C CNN
+F 1 "GND" H 4605 4027 50  0000 C CNN
+F 2 "" H 4600 4200 50  0001 C CNN
+F 3 "" H 4600 4200 50  0001 C CNN
+	1    4600 4200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4600 4200 4600 4150
+Wire Wire Line
+	4300 3950 4250 3950
+$Comp
+L Device:R_US R?
+U 1 1 61BCA9FB
+P 4100 3950
+AR Path="/615B6ECF/61BCA9FB" Ref="R?"  Part="1" 
+AR Path="/61BADA89/61BCA9FB" Ref="R?"  Part="1" 
+F 0 "R?" V 3895 3950 50  0000 C CNN
+F 1 "100" V 3986 3950 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 4140 3940 50  0001 C CNN
+F 3 "~" H 4100 3950 50  0001 C CNN
+	1    4100 3950
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	3950 3950 3900 3950
+Text GLabel 3900 3950 0    39   Input ~ 0
+D17
+$Comp
+L Transistor_FET:C3M0120090D Q?
+U 1 1 61C01275
+P 7000 3950
+AR Path="/615B6ECF/61C01275" Ref="Q?"  Part="1" 
+AR Path="/61BADA89/61C01275" Ref="Q?"  Part="1" 
+F 0 "Q?" H 7150 3850 50  0000 L CNN
+F 1 "DMN67D8L-7" H 7150 3750 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 7000 3950 50  0001 C CIN
+F 3 "https://www.wolfspeed.com/media/downloads/824/C3M0120090D.pdf" H 7000 3950 50  0001 L CNN
+	1    7000 3950
+	1    0    0    -1  
+$EndComp
+$Comp
+L Transistor_FET:AO3401A Q?
+U 1 1 61C0127B
+P 7100 3350
+AR Path="/615B6ECF/61C0127B" Ref="Q?"  Part="1" 
+AR Path="/61BADA89/61C0127B" Ref="Q?"  Part="1" 
+F 0 "Q?" V 7450 3150 50  0000 L CNN
+F 1 "BS250FTA" V 7350 3150 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 7300 3275 50  0001 L CIN
+F 3 "http://www.aosmd.com/pdfs/datasheet/AO3401A.pdf" H 7100 3350 50  0001 L CNN
+	1    7100 3350
+	0    1    -1   0   
+$EndComp
+$Comp
+L Device:R_US R?
+U 1 1 61C01281
+P 6800 3500
+AR Path="/615B6ECF/61C01281" Ref="R?"  Part="1" 
+AR Path="/61BADA89/61C01281" Ref="R?"  Part="1" 
+F 0 "R?" H 6600 3550 50  0000 L CNN
+F 1 "10k" H 6600 3450 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 6840 3490 50  0001 C CNN
+F 3 "~" H 6800 3500 50  0001 C CNN
+	1    6800 3500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6800 3350 6800 3250
+Wire Wire Line
+	6800 3250 6900 3250
+Wire Wire Line
+	6800 3650 6800 3700
+Wire Wire Line
+	6800 3700 7100 3700
+Wire Wire Line
+	7100 3700 7100 3550
+Wire Wire Line
+	7100 3750 7100 3700
+Connection ~ 7100 3700
+Wire Wire Line
+	6800 3250 6550 3250
+Connection ~ 6800 3250
+Wire Wire Line
+	7300 3250 7450 3250
+$Comp
+L power:GND #PWR?
+U 1 1 61C01291
+P 7100 4200
+AR Path="/615B6ECF/61C01291" Ref="#PWR?"  Part="1" 
+AR Path="/61BADA89/61C01291" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 7100 3950 50  0001 C CNN
+F 1 "GND" H 7105 4027 50  0000 C CNN
+F 2 "" H 7100 4200 50  0001 C CNN
+F 3 "" H 7100 4200 50  0001 C CNN
+	1    7100 4200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7100 4200 7100 4150
+Wire Wire Line
+	6800 3950 6750 3950
+$Comp
+L Device:R_US R?
+U 1 1 61C01299
+P 6600 3950
+AR Path="/615B6ECF/61C01299" Ref="R?"  Part="1" 
+AR Path="/61BADA89/61C01299" Ref="R?"  Part="1" 
+F 0 "R?" V 6395 3950 50  0000 C CNN
+F 1 "100" V 6486 3950 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 6640 3940 50  0001 C CNN
+F 3 "~" H 6600 3950 50  0001 C CNN
+	1    6600 3950
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6450 3950 6400 3950
+Text GLabel 6400 3950 0    39   Input ~ 0
+D18
+Text GLabel 5050 3250 2    39   Input ~ 0
+12V-Accessory
+Text GLabel 7550 3250 2    39   Input ~ 0
+12V-On
+$Comp
+L power:+12V #PWR?
+U 1 1 61C020BF
+P 6550 3200
+F 0 "#PWR?" H 6550 3050 50  0001 C CNN
+F 1 "+12V" H 6565 3373 50  0000 C CNN
+F 2 "" H 6550 3200 50  0001 C CNN
+F 3 "" H 6550 3200 50  0001 C CNN
+	1    6550 3200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6550 3200 6550 3250
+$Comp
+L power:+12V #PWR?
+U 1 1 61C02B75
+P 4050 3200
+F 0 "#PWR?" H 4050 3050 50  0001 C CNN
+F 1 "+12V" H 4065 3373 50  0000 C CNN
+F 2 "" H 4050 3200 50  0001 C CNN
+F 3 "" H 4050 3200 50  0001 C CNN
+	1    4050 3200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4050 3200 4050 3250
+Text Notes 3950 2800 0    79   ~ 0
++12V Accessory Mode
+Text Notes 6550 2800 0    79   ~ 0
++12V Ignition On
+$Comp
+L Device:R_US R?
+U 1 1 61C06A3D
+P 4950 3500
+AR Path="/615B6ECF/61C06A3D" Ref="R?"  Part="1" 
+AR Path="/61BADA89/61C06A3D" Ref="R?"  Part="1" 
+F 0 "R?" H 4750 3550 50  0000 L CNN
+F 1 "10k" H 4750 3450 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 4990 3490 50  0001 C CNN
+F 3 "~" H 4950 3500 50  0001 C CNN
+	1    4950 3500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4800 3250 4950 3250
+Wire Wire Line
+	4950 3350 4950 3250
+Connection ~ 4950 3250
+Wire Wire Line
+	4950 3250 5050 3250
+$Comp
+L power:GND #PWR?
+U 1 1 61C07BE7
+P 4950 3700
+AR Path="/615B6ECF/61C07BE7" Ref="#PWR?"  Part="1" 
+AR Path="/61BADA89/61C07BE7" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 4950 3450 50  0001 C CNN
+F 1 "GND" H 4955 3527 50  0000 C CNN
+F 2 "" H 4950 3700 50  0001 C CNN
+F 3 "" H 4950 3700 50  0001 C CNN
+	1    4950 3700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4950 3700 4950 3650
+$Comp
+L Device:R_US R?
+U 1 1 61C08383
+P 7450 3500
+AR Path="/615B6ECF/61C08383" Ref="R?"  Part="1" 
+AR Path="/61BADA89/61C08383" Ref="R?"  Part="1" 
+F 0 "R?" H 7250 3550 50  0000 L CNN
+F 1 "10k" H 7250 3450 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 7490 3490 50  0001 C CNN
+F 3 "~" H 7450 3500 50  0001 C CNN
+	1    7450 3500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7450 3350 7450 3250
+Connection ~ 7450 3250
+Wire Wire Line
+	7450 3250 7550 3250
+$Comp
+L power:GND #PWR?
+U 1 1 61C09304
+P 7450 3700
+AR Path="/615B6ECF/61C09304" Ref="#PWR?"  Part="1" 
+AR Path="/61BADA89/61C09304" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 7450 3450 50  0001 C CNN
+F 1 "GND" H 7455 3527 50  0000 C CNN
+F 2 "" H 7450 3700 50  0001 C CNN
+F 3 "" H 7450 3700 50  0001 C CNN
+	1    7450 3700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7450 3700 7450 3650
+$EndSCHEMATC
