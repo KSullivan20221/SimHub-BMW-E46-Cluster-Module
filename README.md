@@ -180,6 +180,8 @@ At this point, you should be able to launch games from the SimHub dashboard (ens
 
 ### Valid Command / Argument Combos for both programs
 
+The following is a list of valid commands and arguments that you can send to the instrument cluster from both applications. You can send these commands directly through the serial monitor for the E46_Cluster_Test program, or through a Custom Protocol in SimHub:
+
 | Command             | Valid Arguments                                           | Description                                                            |
 | ---                 | ---                                                       | ---                                                                    |
 | speed               | Integer between 1 and 163                                 | Sets the speedometer to the desired value in MPH                       |
