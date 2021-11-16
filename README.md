@@ -152,4 +152,58 @@ For this project, I provided two main programs: E46_Cluster_Test, and main-simhu
 
 ### E46_Cluster_Test
 
-This program was created in order to test 
+This program was created in order to perform basic tests on the cluster. After uploading this code, you can send commands from the serial monitor to the Arduino, and then the Arduino will interact with the cluster in order to carry out the desired function. You must send every command with the following syntax:
+
+<p align="center">
+  <img width="200" height="50" src="https://user-images.githubusercontent.com/80495580/141869276-96da44d5-cdf7-4ba1-ad92-348307d14136.png">
+</p>
+
+In addition, make sure the Arduino Serial monitor is setup as shown below (most importantly, have the baud rate set to 9600, and the line ending set to 'Newline'):
+
+![image](https://user-images.githubusercontent.com/80495580/141869540-ebf4e793-6441-4f00-a5a9-c5b729e238b3.png)
+
+#### Valid Command / Argument Combos for program
+
+| Command             | Valid Arguments                                           | Description                                                            |
+| ---                 | ---                                                       | ---                                                                    |
+| speed               | Integer between 1 and 163                                 | Sets the speedometer to the desired value in MPH                       |
+| rpm                 | Integer between 0 and 7000                                | Sets the tachometer to the desired value  in RPM                       |
+| temp                | Integer between 65 and 405                                | Sets the oil temperature gauge to the desired value in degrees celcius |
+| ignition            | Either 1 or 0                                             | Turns the ignition state to on / off                                   |
+| accessory           | Either 1 or 0                                             | Turns the accessory state to on / off                                  |
+| fuel                | Integer between 1 and 100                                 | Sets the fuel gauge to the desired value                               |
+| engineStateFeedback | Either 1 or 0                                             |                                                                        |
+| signalGong          | Either 1 or 0                                             |                                                                        |
+| bc_button           | Either 1 or 0                                             |                                                                        |
+| seatBelt            | Either 1 or 0                                             |                                                                        |
+| coolantLevelSensor  | Either 1 or 0                                             |                                                                        |
+| brakeWearSensor     | Either 1 or 0                                             |                                                                        |
+| parkingBrakeState   | Either 1 or 0                                             |                                                                        |
+| ABS_Warning         | Either 1 or 0                                             |                                                                        |
+| airbagLight         | Either 1 or 0                                             |                                                                        |
+| brakeFluidSensor    | Either 1 or 0                                             |                                                                        |
+| oilSensor           | Either 1 or 0                                             |                                                                        |
+| oilPressureSwitch   | Either 1 or 0                                             |                                                                        |
+| clusterBacklight    | Either 1 or 0                                             |                                                                        |
+| washerFluidLight    | Either 1 or 0                                             |                                                                        |
+| cruiseLight         | Either 1 or 0                                             |                                                                        |
+| rolloverSensor      | Either 1 or 0                                             |                                                                        |
+| reverse             | Either 1 or 0                                             |                                                                        |
+| mpg                 | Either 1 or 0                                             |                                                                        |
+| eLight              | Either 1 or 0                                             |                                                                        |
+| emlLight            | Either 1 or 0                                             |                                                                        |
+| gasCapLight         | Either 1 or 0                                             |                                                                        |
+| heatLight           | Either 1 or 0                                             |                                                                        |
+| oilLight            | Either 1 or 0                                             |                                                                        |
+| chgLight            | Either 1 or 0                                             |                                                                        |
+| highBeam            | Either 1 or 0                                             |                                                                        |
+| fogRear             | Either 1 or 0                                             |                                                                        |
+| fogFront            | Either 1 or 0                                             |                                                                        |
+| leftBlink           | Either 1 or 0                                             |                                                                        |
+| rightBlink          | Either 1 or 0                                             |                                                                        |
+| backRightLight      | Either 1 or 0                                             |                                                                        |
+| backLeftLight       | Either 1 or 0                                             |                                                                        |
+| frontRightLight     | Either 1 or 0                                             |                                                                        |
+| frontLeftLight      | Either 1 or 0                                             |                                                                        |
+| carLight            | Either 1 or 0                                             |                                                                        |
+
