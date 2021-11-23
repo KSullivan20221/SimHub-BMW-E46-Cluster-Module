@@ -31,7 +31,7 @@ MCP2515 CAN(MCP2515_CS);
   uint8_t accessory_state = 0;
   uint8_t oil_pressure_switch_state = 0;
   uint8_t cluster_backlight_state = 0;
-  uint8_t washer_fluid_level_state;
+  uint8_t washer_fluid_level_state = 1;
   uint8_t rollover_sensor_state;
   uint8_t reverse_state;
   
