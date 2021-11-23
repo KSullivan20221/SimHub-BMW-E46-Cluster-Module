@@ -73,7 +73,7 @@ void setup() {
   abs_warning_state = 1;
   brake_fluid_state = 1;
   temp_val = 275;
-  
+  washer_fluid_level_state = 1;
 
   // E46 Cluster Control Pin Setup
   pinMode(ENGINE_START_FEEDBACK_PIN, OUTPUT);
