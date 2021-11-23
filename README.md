@@ -201,7 +201,7 @@ The following is a list of valid commands and arguments that you can send to the
 | engineStateFeedback | Either 1 or 0                                             | No noticeable effect                                                   				|
 | signalGong          | Either 1 or 0                                             | No noticeable effect                                                   				|
 | bc_button           | Either 1 or 0                                             | No noticeable effect                                                   				|
-| seatBelt            | Either 1 or 0                                             |                                                                        				|
+| seatBelt            | Either 1 or 0                                             | No noticeable effect                                                          |
 | coolantLevelSensor  | Either 1 or 0                                             | '0' causes the coolant light to come on, '1' turns it off (have to cycle ignition to change state)  |
 | brakeWearSensor     | Either 1 or 0                                             | '0' causes the brake pad wear light to come on, '1' turns it off       				|
 | parkingBrakeState   | Either 1 or 0                                             | '0' turns BRAKE light on, '1' turns it off                             				|
@@ -211,7 +211,7 @@ The following is a list of valid commands and arguments that you can send to the
 | oilSensor           | Either 1 or 0                                             | No noticeable effect                                                   				|
 | oilPressureSwitch   | Either 1 or 0                                             | No noticeable effect                                                   				|
 | clusterBacklight    | Either 1 or 0                                             | No noticeable effect                                                   				|
-| washerFluidLight    | Either 1 or 0                                             |                                                                        				|
+| washerFluidLight    | Either 1 or 0                                             | '1' turns the light off, '0' turns it on (have to cycle ignition to change                                                                        				|
 | cruiseLight         | Either 1 or 0                                             |                                                                        				|
 | rolloverSensor      | Either 1 or 0                                             |                                                                        				|
 | reverse             | Either 1 or 0                                             |                                                                        				|
